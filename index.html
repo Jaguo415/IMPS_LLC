@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMPS - Imagine. Personalize. Spend time together.</title>
+    <style>
+        :root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
+  --color-bg-2: rgba(245, 158, 11, 0.08); /* Light yellow */
+  --color-bg-3: rgba(34, 197, 94, 0.08); /* Light green */
+  --color-bg-4: rgba(239, 68, 68, 0.08); /* Light red */
+  --color-bg-5: rgba(147, 51, 234, 0.08); /* Light purple */
+  --color-bg-6: rgba(249, 115, 22, 0.08); /* Light orange */
+  --color-bg-7: rgba(236, 72, 153, 0.08); /* Light pink */
+  --color-bg-8: rgba(6, 182, 212, 0.08); /* Light cyan */
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  /* Common style patterns */
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+  --status-bg-opacity: 0.15;
+  --status-border-opacity: 0.25;
+  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  /* RGB versions for opacity control */
+  --color-success-rgb: 33, 128, 141;
+  --color-error-rgb: 192, 21, 47;
+  --color-warning-rgb: 168, 75, 47;
+  --color-info-rgb: 98, 108, 113;
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
+    0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+        /* Custom IMPS Theme - Override design system for dark theme */
+        :root {
+            --color-background: #0F172A;
+            --color-surface: rgba(30, 41, 59, 0.8);
+            --color-text: #F1F5F9;
+            --color-text-secondary: #94A3B8;
+            --color-primary: #8B5CF6;
+            --color-primary-hover: #7C3AED;
+            --color-secondary-brand: #EC4899;
+            --color-border: rgba(139, 92, 246, 0.2);
+            --color-card-bg: rgba(30, 41, 59, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+            background-attachment: fixed;
+            color: var(--color-text);
+            overflow-x: hidden;
+        }
+
+        /* View Management */
+        .view {
+            display: none;
+            min-height: 100vh;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Common Components */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary-brand) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-card {
+            background: var(--color-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-12) var(--space-24);
+            border-radius: var(--radius-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+            font-size: var(--font-size-base);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        /* Landing Page */
+        .landing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-16) var(--space-32);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-24);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--duration-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: var(--space-12);
+        }
+
+        .hero-section {
+            padding: 120px var(--space-32) var(--space-32);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-32);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-16);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .examples-section {
+            padding: 80px var(--space-32);
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            text-align: center;
+        }
+
+        .examples-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-20);
+            margin: var(--space-32) 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .example-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all var(--duration-normal);
+            aspect-ratio: 3/4;
+        }
+
+        .example-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.4);
+        }
+
+        .example-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .features-section {
+            padding: 80px var(--space-32);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-24);
+            max-width: 1000px;
+            margin: var(--space-32) auto 0;
+        }
+
+        .feature-card {
+            padding: var(--space-24);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-16);
+        }
+
+        .pricing-section {
+            padding: 80px var(--space-32);
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+            max-width: 800px;
+            margin: var(--space-32) auto 0;
+        }
+
+        .pricing-card {
+            padding: var(--space-32);
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-card.premium {
+            border: 2px solid var(--color-secondary-brand);
+            box-shadow: 0 20px 40px rgba(236, 72, 153, 0.2);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-bold);
+            margin: var(--space-16) 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: var(--space-24) 0;
+        }
+
+        .features-list li {
+            padding: var(--space-8) 0;
+            color: var(--color-text-secondary);
+        }
+
+        .footer {
+            padding: var(--space-32);
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-24);
+            margin-bottom: var(--space-16);
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+        }
+
+        /* Dashboard Layout */
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--color-surface);
+            border-right: 1px solid var(--color-border);
+            padding: var(--space-24);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: var(--space-8);
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-12);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-base);
+            transition: all var(--duration-fast);
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--color-text);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: var(--space-32);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: rgba(30, 41, 59, 0.5);
+            color: var(--color-text);
+            font-size: var(--font-size-base);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        /* Gallery Styles */
+        .gallery-filters {
+            display: flex;
+            gap: var(--space-16);
+            margin-bottom: var(--space-32);
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: var(--space-8) var(--space-12);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-20);
+        }
+
+        .companion-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all var(--duration-normal);
+        }
+
+        .companion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .companion-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .companion-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: var(--space-16);
+            color: white;
+        }
+
+        /* Chat Interface */
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: var(--space-16);
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+
+        .message {
+            margin-bottom: var(--space-16);
+            display: flex;
+            gap: var(--space-12);
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: var(--space-12);
+            border-radius: var(--radius-lg);
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));
+            color: white;
+        }
+
+        .message.ai .message-bubble {
+            background: var(--color-surface);
+            color: var(--color-text);
+        }
+
+        .chat-input {
+            display: flex;
+            gap: var(--space-12);
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .chat-input input {
+            flex: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .examples-gallery,
+            .features-grid,
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .sidebar-nav {
+                display: flex;
+                overflow-x: auto;
+            }
+
+            .sidebar-nav li {
+                margin-right: var(--space-8);
+                margin-bottom: 0;
+            }
+        }
+
+        /* Customization Styles */
+        .customization-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-32);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-32);
+        }
+
+        .preview-panel {
+            text-align: center;
+        }
+
+        .preview-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--color-border);
+        }
+
+        .controls-panel {
+            padding: var(--space-24);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .control-section {
+            margin-bottom: var(--space-24);
+        }
+
+        .control-section h3 {
+            color: var(--color-secondary-brand);
+            margin-bottom: var(--space-16);
+            font-size: var(--font-size-lg);
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #334155;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .customization-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(139, 92, 246, 0.2);
+            border-top: 4px solid var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hide scrollbar for chat messages */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- VIEW 1: LANDING PAGE -->
+    <div id="landing" class="view active">
+        <header class="landing-header">
+            <div class="logo gradient-text">IMPS</div>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary" onclick="showLogin()">Sign In</button>
+                <button class="btn btn-primary" onclick="showAgeVerification()">Get Started</button>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <h1 class="hero-title gradient-text">Your Perfect AI Companion Awaits</h1>
+            <p class="hero-subtitle">Create personalized AI girlfriends with advanced AI technology. Chat, customize, and connect.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="showAgeVerification()">Start Free Trial</button>
+                <button class="btn btn-secondary" onclick="showGallery()">View Gallery</button>
+            </div>
+        </section>
+
+        <section class="examples-section">
+            <h2 class="section-title gradient-text">Meet Our AI Companions</h2>
+            <div class="examples-gallery" id="examplesGallery">
+                <!-- Gallery items will be populated by JavaScript -->
+            </div>
+            <p style="color: var(--color-text-secondary); margin-top: var(--space-24);">And many more to discover...</p>
+        </section>
+
+        <section id="features" class="features-section">
+            <h2 class="section-title gradient-text">Why Choose IMPS?</h2>
+            <div class="features-grid">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Unlimited Conversations</h3>
+                    <p style="color: var(--color-text-secondary);">Chat 24/7 with your AI companion</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Creation</h3>
+                    <p style="color: var(--color-text-secondary);">Design your perfect companion</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Advanced AI</h3>
+                    <p style="color: var(--color-text-secondary);">Powered by latest language models</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p style="color: var(--color-text-secondary);">Your conversations are encrypted and private</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section">
+            <h2 class="section-title gradient-text">Simple, Transparent Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card glass-card">
+                    <h3>FREE TIER</h3>
+                    <div class="price gradient-text">$0<span style="font-size: 1rem;">/month</span></div>
+                    <ul class="features-list">
+                        <li>Gallery browsing</li>
+                        <li>10 messages per day</li>
+                        <li>Standard responses</li>
+                        <li>Basic customization</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="showAgeVerification()">Get Started Free</button>
+                </div>
+                <div class="pricing-card glass-card premium">
+                    <h3>PREMIUM TIER</h3>
+                    <div class="price gradient-text">$25<span style="font-size: 1rem;">/month</span></div>
+                    <p style="color: var(--color-secondary-brand); margin-bottom: var(--space-16);">7-day trial for $1</p>
+                    <ul class="features-list">
+                        <li>Unlimited messaging</li>
+                        <li>Custom AI girlfriend creation</li>
+                        <li>50 generated images/month</li>
+                        <li>Priority support</li>
+                        <li>Advanced personality customization</li>
+                        <li>Voice messages (coming soon)</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showPayment()">Start Premium Trial</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Content Guidelines</a>
+                <a href="#">Refund Policy</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>© 2025 IMPS. All rights reserved. | 18+ Only. You must be 18 or older to use this service.</p>
+        </footer>
+    </div>
+
+    <!-- VIEW 2: AGE VERIFICATION MODAL -->
+    <div id="ageVerificationModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size: 3rem; margin-bottom: var(--space-16);">⚠️</div>
+            <h2>Age Verification Required</h2>
+            <p style="margin: var(--space-16) 0; color: var(--color-text-secondary);">You must be 18 years or older to access IMPS</p>
+            <div class="form-group">
+                <label class="form-label">Date of Birth</label>
+                <div style="display: flex; gap: var(--space-8);">
+                    <select class="form-input" id="birthMonth">
+                        <option value="">MM</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="form-input" id="birthDay">
+                        <option value="">DD</option>
+                        <!-- Days 1-31 -->
+                    </select>
+                    <select class="form-input" id="birthYear">
+                        <option value="">YYYY</option>
+                        <!-- Years from current year - 100 to current year - 18 -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="display: flex; align-items: center; gap: var(--space-8);">
+                    <input type="checkbox" id="ageConfirm"> I certify that I am 18 years or older
+                </label>
+            </div>
+            <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                <button class="btn btn-secondary" onclick="closeAgeVerification()">Exit</button>
+                <button class="btn btn-primary" id="ageVerifyBtn" onclick="verifyAge()" disabled>Continue</button>
+            </div>
+            <div id="ageError" style="color: var(--color-error); margin-top: var(--space-16); display: none;"></div>
+        </div>
+    </div>
+
+    <!-- VIEW 3: REGISTRATION PAGE -->
+    <div id="registration" class="view">
+        <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: var(--space-32);">
+            <div class="glass-card" style="padding: var(--space-32); max-width: 400px; width: 100%;">
+                <h2 style="text-align: center; margin-bottom: var(--space-24); color: var(--color-text);">Create Your Account</h2>
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="regPassword" required>
+                        <div style="height: 4px; background: #334155; border-radius: 2px; margin-top: var(--space-8);">
+                            <div id="passwordStrength" style="height: 100%; border-radius: 2px; width: 0%; transition: all 0.3s;"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-input" id="regConfirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: var(--space-8);">
+                            <input type="checkbox" id="termsAgree" required> I agree to the Terms of Service and Privacy Policy
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+                </form>
+                <p style="text-align: center; margin-top: var(--space-16); color: var(--color-text-secondary);">Already have an account? <a href="#" onclick="showLogin()" style="color: var(--color-primary);">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 4: LOGIN PAGE -->
+    <div id="login" class="view">
+        <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: var(--space-32);">
+            <div class="glass-card" style="padding: var(--space-32); max-width: 400px; width: 100%;">
+                <h2 style="text-align: center; margin-bottom: var(--space-24); color: var(--color-text);">Welcome Back</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" id="loginPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: var(--space-8);">
+                            <input type="checkbox" id="rememberMe"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+                </form>
+                <div style="text-align: center; margin-top: var(--space-16);">
+                    <a href="#" style="color: var(--color-primary);">Forgot password?</a>
+                </div>
+                <p style="text-align: center; margin-top: var(--space-16); color: var(--color-text-secondary);">Don't have an account? <a href="#" onclick="showRegistration()" style="color: var(--color-primary);">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 5: MAIN DASHBOARD -->
+    <div id="dashboard" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()" class="active">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content">
+                <h1>Welcome back, <span id="userName">User</span>!</h1>
+                
+                <div class="glass-card" style="padding: var(--space-24); margin: var(--space-24) 0;">
+                    <h3 style="margin-bottom: var(--space-16);">Subscription Status</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p><strong>Current Plan:</strong> <span id="currentPlan">Free Tier</span></p>
+                            <p style="color: var(--color-text-secondary);">Messages used today: <span id="messagesUsed">3</span>/10</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="showPayment()">Upgrade to Premium</button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-24); margin: var(--space-32) 0;">
+                    <div class="glass-card" style="padding: var(--space-24); cursor: pointer;" onclick="showGallery()">
+                        <h3>Browse Gallery</h3>
+                        <p style="color: var(--color-text-secondary); margin: var(--space-12) 0;">Discover new AI companions</p>
+                        <div style="display: flex; gap: var(--space-8); margin-top: var(--space-16);">
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));"></div>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #43e97b, #38f9d7);"></div>
+                            <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #fa709a, #fee140);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="padding: var(--space-24); cursor: pointer;" onclick="showChat('recent')">
+                        <h3>Continue Conversation</h3>
+                        <p style="color: var(--color-text-secondary); margin: var(--space-12) 0;">Chat with your recent companion</p>
+                        <p style="margin-top: var(--space-16);">💬 Last active: 2 hours ago</p>
+                    </div>
+                    
+                    <div class="glass-card" style="padding: var(--space-24); cursor: pointer;" onclick="showCustomCreator()">
+                        <h3>Create New Companion</h3>
+                        <p style="color: var(--color-text-secondary); margin: var(--space-12) 0;">Design your perfect AI girlfriend</p>
+                        <div style="font-size: 2rem; margin-top: var(--space-16);">➕</div>
+                    </div>
+                </div>
+
+                <div class="glass-card" style="padding: var(--space-24);">
+                    <h3 style="margin-bottom: var(--space-16);">Recent Activity</h3>
+                    <div style="space-y: var(--space-12);">
+                        <p style="color: var(--color-text-secondary);">💬 Chatted with Sophia - 2 hours ago</p>
+                        <p style="color: var(--color-text-secondary);">🎨 Created new companion Emma - Yesterday</p>
+                        <p style="color: var(--color-text-secondary);">📱 Upgraded to Premium - 3 days ago</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 6: GALLERY PAGE -->
+    <div id="gallery" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()" class="active">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content">
+                <h1>AI Companion Gallery</h1>
+                <p style="color: var(--color-text-secondary); margin-bottom: var(--space-24);">Select from our diverse collection of AI-generated companions</p>
+                
+                <div class="gallery-filters">
+                    <input type="text" class="form-input" placeholder="Search companions..." style="width: 250px;">
+                    <select class="filter-select">
+                        <option>All Ethnicities</option>
+                        <option>Asian</option>
+                        <option>Caucasian</option>
+                        <option>African</option>
+                        <option>Hispanic</option>
+                        <option>Middle Eastern</option>
+                        <option>Mixed</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>All Styles</option>
+                        <option>Professional</option>
+                        <option>Casual</option>
+                        <option>Elegant</option>
+                        <option>Sporty</option>
+                        <option>Edgy</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>All Ages</option>
+                        <option>18-25</option>
+                        <option>25-30</option>
+                        <option>30-35</option>
+                        <option>35-40</option>
+                    </select>
+                </div>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery items populated by JavaScript -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 7: COMPANION PROFILE PAGE -->
+    <div id="companionProfile" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-32);">
+                    <div>
+                        <img id="profileImage" src="" alt="Companion" style="width: 100%; border-radius: var(--radius-lg);">
+                    </div>
+                    <div>
+                        <h1 id="companionName">Sophia</h1>
+                        <p style="color: var(--color-text-secondary); margin: var(--space-8) 0;">Age: <span id="companionAge">25-30</span></p>
+                        
+                        <div style="margin: var(--space-16) 0;">
+                            <h3>Personality Traits</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-8);">
+                                <span style="background: rgba(139, 92, 246, 0.2); padding: var(--space-4) var(--space-8); border-radius: var(--radius-full); font-size: var(--font-size-sm);">Warm</span>
+                                <span style="background: rgba(139, 92, 246, 0.2); padding: var(--space-4) var(--space-8); border-radius: var(--radius-full); font-size: var(--font-size-sm);">Playful</span>
+                                <span style="background: rgba(139, 92, 246, 0.2); padding: var(--space-4) var(--space-8); border-radius: var(--radius-full); font-size: var(--font-size-sm);">Intelligent</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin: var(--space-16) 0;">
+                            <h3>Style Preference</h3>
+                            <p style="color: var(--color-text-secondary);">Professional</p>
+                        </div>
+                        
+                        <div style="margin: var(--space-24) 0;">
+                            <p id="companionBio">Hi! I'm Sophia. I love deep conversations and sharing ideas. Let's chat!</p>
+                        </div>
+                        
+                        <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                            <button class="btn btn-primary" onclick="showChat('sophia')" style="flex: 1;">Start Chatting</button>
+                            <button class="btn btn-secondary" onclick="showCustomCreator()">Customize Appearance</button>
+                            <button class="btn btn-secondary">❤️</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 8: CHAT INTERFACE -->
+    <div id="chat" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()" class="active">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content" style="display: flex; flex-direction: column; padding: 0;">
+                <div class="chat-header">
+                    <button class="btn btn-secondary" onclick="showDashboard()">← Back</button>
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));"></div>
+                    <div>
+                        <h3 id="chatCompanionName">Sophia</h3>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Online</p>
+                    </div>
+                    <div style="margin-left: auto; display: flex; gap: var(--space-12);">
+                        <button class="btn btn-secondary" disabled>📹</button>
+                        <button class="btn btn-secondary">⚙️</button>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages populated by JavaScript -->
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" class="form-input" id="messageInput" placeholder="Type your message..." onkeypress="handleMessageKeyPress(event)">
+                    <button class="btn btn-secondary">😊</button>
+                    <button class="btn btn-secondary" title="Premium Feature" onclick="showPremiumModal()">📎</button>
+                    <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 9: CUSTOM COMPANION CREATOR -->
+    <div id="customCreator" class="view">
+        <div class="customization-layout">
+            <div class="preview-panel">
+                <h2>Create Your Perfect AI Companion</h2>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: var(--space-8) var(--space-16); border-radius: var(--radius-base); margin: var(--space-16) 0;">
+                    Step <span id="currentStep">1</span> of 4
+                </div>
+                <img id="creatorPreview" class="preview-image" src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5610df26-d54e-4e1f-96b0-75b1e2a3585d.png" alt="Preview">
+            </div>
+            
+            <div class="glass-card controls-panel">
+                <div id="step1" class="creation-step">
+                    <h3>Choose Starting Point</h3>
+                    <div style="display: grid; gap: var(--space-16); margin-top: var(--space-16);">
+                        <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">📸 Upload Photo</button>
+                        <button class="btn btn-secondary" onclick="showGallerySelection()">🖼️ Choose from Gallery</button>
+                        <button class="btn btn-primary" onclick="nextStep()">✨ Start from Scratch</button>
+                    </div>
+                </div>
+                
+                <div id="step2" class="creation-step" style="display: none;">
+                    <h3>Customize Appearance</h3>
+                    <div class="control-section">
+                        <h4>Facial Features</h4>
+                        <div class="form-group">
+                            <label>Eye Size</label>
+                            <input type="range" class="slider" min="0" max="100" value="50" oninput="updateCreatorPreview()">
+                        </div>
+                        <div class="form-group">
+                            <label>Lip Fullness</label>
+                            <input type="range" class="slider" min="0" max="100" value="50" oninput="updateCreatorPreview()">
+                        </div>
+                    </div>
+                    
+                    <div class="control-section">
+                        <h4>Hair</h4>
+                        <div class="form-group">
+                            <label>Hair Color</label>
+                            <select class="form-input" onchange="updateCreatorPreview()">
+                                <option>Blonde</option>
+                                <option>Brunette</option>
+                                <option>Black</option>
+                                <option>Red</option>
+                                <option>Auburn</option>
+                                <option>Platinum</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Hair Style</label>
+                            <select class="form-input" onchange="updateCreatorPreview()">
+                                <option>Straight</option>
+                                <option>Wavy</option>
+                                <option>Curly</option>
+                                <option>Braided</option>
+                                <option>Updo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+                
+                <div id="step3" class="creation-step" style="display: none;">
+                    <h3>Personality</h3>
+                    <div class="control-section">
+                        <h4>Personality Traits</h4>
+                        <div class="form-group">
+                            <label>Warmth</label>
+                            <input type="range" class="slider" min="0" max="100" value="75">
+                        </div>
+                        <div class="form-group">
+                            <label>Playfulness</label>
+                            <input type="range" class="slider" min="0" max="100" value="60">
+                        </div>
+                        <div class="form-group">
+                            <label>Intelligence</label>
+                            <input type="range" class="slider" min="0" max="100" value="85">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Conversation Style</label>
+                        <select class="form-input">
+                            <option>Casual</option>
+                            <option>Formal</option>
+                            <option>Flirty</option>
+                            <option>Friendly</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--space-8); margin-top: var(--space-8);">
+                            <label style="display: flex; align-items: center; gap: var(--space-4);"><input type="checkbox"> Travel</label>
+                            <label style="display: flex; align-items: center; gap: var(--space-4);"><input type="checkbox"> Fitness</label>
+                            <label style="display: flex; align-items: center; gap: var(--space-4);"><input type="checkbox"> Art</label>
+                            <label style="display: flex; align-items: center; gap: var(--space-4);"><input type="checkbox"> Music</label>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next →</button>
+                    </div>
+                </div>
+                
+                <div id="step4" class="creation-step" style="display: none;">
+                    <h3>Name &amp; Generate</h3>
+                    <div class="form-group">
+                        <label>Name your companion</label>
+                        <input type="text" class="form-input" id="companionNameInput" placeholder="Enter name...">
+                    </div>
+                    
+                    <div class="glass-card" style="padding: var(--space-16); margin: var(--space-16) 0;">
+                        <h4>Review Summary</h4>
+                        <p style="color: var(--color-text-secondary); margin-top: var(--space-8);">Hair: Brunette, Wavy</p>
+                        <p style="color: var(--color-text-secondary);">Style: Professional</p>
+                        <p style="color: var(--color-text-secondary);">Personality: Warm, Intelligent</p>
+                    </div>
+                    
+                    <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                        <button class="btn btn-primary" onclick="generateCompanion()" style="flex: 1;">Generate AI Companion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW 10: MY COMPANIONS PAGE -->
+    <div id="myCompanions" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()" class="active">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-32);">
+                    <h1>My Companions</h1>
+                    <button class="btn btn-primary" onclick="showCustomCreator()">Create New</button>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="glass-card" style="padding: var(--space-16);">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5610df26-d54e-4e1f-96b0-75b1e2a3585d.png" alt="Sophia" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--radius-base);">
+                        <h3 style="margin: var(--space-12) 0;">Sophia</h3>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Last chat: 2 hours ago</p>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Messages: 127</p>
+                        <div style="display: flex; gap: var(--space-8); margin-top: var(--space-12);">
+                            <button class="btn btn-primary" style="flex: 1; padding: var(--space-8);" onclick="showChat('sophia')">Chat</button>
+                            <button class="btn btn-secondary" style="padding: var(--space-8);">Edit</button>
+                            <button class="btn btn-secondary" style="padding: var(--space-8); color: var(--color-error);">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="padding: var(--space-16);">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/b847f04e-3d08-4730-aa23-3cd537cb827d.png" alt="Emma" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: var(--radius-base);">
+                        <h3 style="margin: var(--space-12) 0;">Emma</h3>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Last chat: Yesterday</p>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Messages: 45</p>
+                        <div style="display: flex; gap: var(--space-8); margin-top: var(--space-12);">
+                            <button class="btn btn-primary" style="flex: 1; padding: var(--space-8);" onclick="showChat('emma')">Chat</button>
+                            <button class="btn btn-secondary" style="padding: var(--space-8);">Edit</button>
+                            <button class="btn btn-secondary" style="padding: var(--space-8); color: var(--color-error);">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 11: SETTINGS PAGE -->
+    <div id="settings" class="view">
+        <div class="dashboard-layout">
+            <aside class="sidebar">
+                <div class="logo gradient-text" style="margin-bottom: var(--space-32);">IMPS</div>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="showDashboard()">🏠 Dashboard</a></li>
+                    <li><a href="#" onclick="showGallery()">🖼️ Gallery</a></li>
+                    <li><a href="#" onclick="showMyCompanions()">❤️ My Companions</a></li>
+                    <li><a href="#" onclick="showMessages()">💬 Messages</a></li>
+                    <li><a href="#" onclick="showCustomCreator()">➕ Create Custom</a></li>
+                    <li><a href="#" onclick="showSettings()" class="active">⚙️ Settings</a></li>
+                    <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+                </ul>
+            </aside>
+            <main class="main-content">
+                <h1>Settings</h1>
+                
+                <div style="display: flex; gap: var(--space-4); margin: var(--space-24) 0; border-bottom: 1px solid var(--color-border);">
+                    <button class="btn btn-secondary settings-tab active" onclick="showSettingsTab('account')">Account</button>
+                    <button class="btn btn-secondary settings-tab" onclick="showSettingsTab('subscription')">Subscription</button>
+                    <button class="btn btn-secondary settings-tab" onclick="showSettingsTab('privacy')">Privacy</button>
+                    <button class="btn btn-secondary settings-tab" onclick="showSettingsTab('notifications')">Notifications</button>
+                </div>
+                
+                <div id="accountTab" class="settings-content">
+                    <div class="glass-card" style="padding: var(--space-24); margin-bottom: var(--space-16);">
+                        <h3>Account Information</h3>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" value="user@example.com" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Change Password</label>
+                            <input type="password" class="form-input" placeholder="New password">
+                        </div>
+                        <button class="btn btn-primary">Save Changes</button>
+                    </div>
+                    <div class="glass-card" style="padding: var(--space-24); border-color: var(--color-error);">
+                        <h3 style="color: var(--color-error);">Danger Zone</h3>
+                        <p style="color: var(--color-text-secondary); margin: var(--space-12) 0;">Once you delete your account, there is no going back.</p>
+                        <button class="btn" style="background: var(--color-error); color: white;">Delete Account</button>
+                    </div>
+                </div>
+                
+                <div id="subscriptionTab" class="settings-content" style="display: none;">
+                    <div class="glass-card" style="padding: var(--space-24);">
+                        <h3>Current Plan</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin: var(--space-16) 0;">
+                            <div>
+                                <p><strong>Free Tier</strong></p>
+                                <p style="color: var(--color-text-secondary);">10 messages per day</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="showPayment()">Upgrade to Premium</button>
+                        </div>
+                        <h4 style="margin-top: var(--space-24);">Billing History</h4>
+                        <p style="color: var(--color-text-secondary);">No billing history yet.</p>
+                    </div>
+                </div>
+                
+                <div id="privacyTab" class="settings-content" style="display: none;">
+                    <div class="glass-card" style="padding: var(--space-24);">
+                        <h3>Privacy Settings</h3>
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Data usage for AI improvement</span>
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Auto-delete conversations after 30 days</span>
+                                <input type="checkbox">
+                            </label>
+                        </div>
+                        <button class="btn btn-secondary">Download My Data</button>
+                    </div>
+                </div>
+                
+                <div id="notificationsTab" class="settings-content" style="display: none;">
+                    <div class="glass-card" style="padding: var(--space-24);">
+                        <h3>Notification Preferences</h3>
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Email notifications</span>
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                <span>Marketing emails</span>
+                                <input type="checkbox">
+                            </label>
+                        </div>
+                        <button class="btn btn-primary">Save Preferences</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- VIEW 12: PAYMENT PAGE -->
+    <div id="payment" class="view">
+        <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: var(--space-32);">
+            <div class="glass-card" style="padding: var(--space-32); max-width: 600px; width: 100%;">
+                <h2 style="text-align: center; margin-bottom: var(--space-24);">Upgrade to Premium</h2>
+                
+                <div class="glass-card" style="padding: var(--space-24); margin-bottom: var(--space-24); background: rgba(236, 72, 153, 0.1);">
+                    <h3>Premium Features</h3>
+                    <ul style="margin: var(--space-16) 0; color: var(--color-text-secondary);">
+                        <li>Unlimited messaging</li>
+                        <li>Custom AI girlfriend creation</li>
+                        <li>50 generated images/month</li>
+                        <li>Priority support</li>
+                        <li>Advanced personality customization</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: var(--space-16);">
+                        <div class="gradient-text" style="font-size: 2rem; font-weight: bold;">$25/month</div>
+                        <p style="color: var(--color-secondary-brand);">Special offer: 7-day trial for $1</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: var(--space-4); margin-bottom: var(--space-16);">
+                    <button class="btn btn-primary payment-tab active" onclick="showPaymentTab('card')">Credit Card</button>
+                    <button class="btn btn-secondary payment-tab" onclick="showPaymentTab('crypto')">Cryptocurrency</button>
+                </div>
+                
+                <div id="cardTab" class="payment-content">
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Card Number</label>
+                            <input type="text" class="form-input" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12);">
+                            <div class="form-group">
+                                <label class="form-label">Expiry Date</label>
+                                <input type="text" class="form-input" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">CVV</label>
+                                <input type="text" class="form-input" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Billing Address</label>
+                            <input type="text" class="form-input" placeholder="123 Main St, City, State, ZIP">
+                        </div>
+                        <button type="button" class="btn btn-primary" style="width: 100%;" onclick="processPayment()">Start Trial ($1)</button>
+                    </form>
+                </div>
+                
+                <div id="cryptoTab" class="payment-content" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Select Cryptocurrency</label>
+                        <select class="form-input">
+                            <option>Bitcoin (BTC)</option>
+                            <option>Ethereum (ETH)</option>
+                            <option>USDT</option>
+                        </select>
+                    </div>
+                    <div style="text-align: center; margin: var(--space-24) 0;">
+                        <div style="width: 150px; height: 150px; background: white; margin: 0 auto; border-radius: var(--radius-base); display: flex; align-items: center; justify-content: center;">
+                            <div style="font-size: 6rem;">💳</div>
+                        </div>
+                        <p style="margin: var(--space-12) 0; color: var(--color-text-secondary);">Amount to send: 0.00003 BTC</p>
+                        <p style="font-family: var(--font-family-mono); font-size: var(--font-size-sm);">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="processPayment()">I've sent payment</button>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: var(--space-16); margin-top: var(--space-24); color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                    <span>🔒 Secure payment</span>
+                    <span>✓ PCI compliant</span>
+                    <span>💰 Money-back guarantee</span>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--space-16);">
+                    <button class="btn btn-secondary" onclick="showDashboard()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div id="premiumModal" class="modal">
+        <div class="modal-content">
+            <h3>Premium Feature</h3>
+            <p style="margin: var(--space-16) 0; color: var(--color-text-secondary);">This feature requires a Premium subscription.</p>
+            <div style="display: flex; gap: var(--space-12);">
+                <button class="btn btn-secondary" onclick="closePremiumModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="showPayment()">Upgrade Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div style="font-size: 3rem; margin-bottom: var(--space-16);">✅</div>
+            <h3 id="successTitle">Success!</h3>
+            <p id="successMessage" style="margin: var(--space-16) 0; color: var(--color-text-secondary);"></p>
+            <button class="btn btn-primary" onclick="closeSuccessModal()">Continue</button>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+
+    <script>
+        // Application State
+        let appState = {
+            currentView: 'landing',
+            user: null,
+            isLoggedIn: false,
+            currentCompanion: null,
+            messages: [],
+            companions: [],
+            customizationStep: 1
+        };
+
+        // Gallery Data with provided images
+        const galleryData = [
+            {
+                id: 'sophia',
+                name: 'Sophia',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5610df26-d54e-4e1f-96b0-75b1e2a3585d.png',
+                style: 'Professional',
+                ethnicity: 'Asian',
+                age: '25-30',
+                bio: "Hi! I'm Sophia. I love deep conversations and sharing ideas. Let's chat!",
+                traits: ['Warm', 'Playful', 'Intelligent']
+            },
+            {
+                id: 'emma',
+                name: 'Emma',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/b847f04e-3d08-4730-aa23-3cd537cb827d.png',
+                style: 'Casual',
+                ethnicity: 'Caucasian',
+                age: '22-28',
+                bio: "Hey there! I'm Emma. I love adventure and trying new things!",
+                traits: ['Energetic', 'Funny', 'Adventurous']
+            },
+            {
+                id: 'zara',
+                name: 'Zara',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/d31963e4-0cfb-4dec-be61-a865f971c725.png',
+                style: 'Elegant',
+                ethnicity: 'African',
+                age: '28-33',
+                bio: "Hello! I'm Zara. I appreciate the finer things in life and meaningful connections.",
+                traits: ['Sophisticated', 'Kind', 'Thoughtful']
+            },
+            {
+                id: 'isabella',
+                name: 'Isabella',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/434c6e53-bcd5-4368-8597-e9115c31f0e8.png',
+                style: 'Sporty',
+                ethnicity: 'Hispanic',
+                age: '23-27',
+                bio: "¡Hola! I'm Isabella. I love staying active and living life to the fullest!",
+                traits: ['Athletic', 'Positive', 'Motivated']
+            },
+            {
+                id: 'layla',
+                name: 'Layla',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/9dd972f8-9ce0-4669-8f4a-a4dca5880178.png',
+                style: 'Elegant',
+                ethnicity: 'Middle Eastern',
+                age: '26-31',
+                bio: "Greetings! I'm Layla. I enjoy art, culture, and deep philosophical discussions.",
+                traits: ['Cultured', 'Wise', 'Elegant']
+            },
+            {
+                id: 'yuki',
+                name: 'Yuki',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/ceb07993-781a-4aab-a8d6-9a20b6a3813f.png',
+                style: 'Edgy',
+                ethnicity: 'Asian',
+                age: '21-26',
+                bio: "Hey! I'm Yuki. I march to the beat of my own drum and love creative expression.",
+                traits: ['Creative', 'Independent', 'Bold']
+            },
+            {
+                id: 'chloe',
+                name: 'Chloe',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/8937a623-2d49-42b4-8aac-245b6ae78e4a.png',
+                style: 'Casual',
+                ethnicity: 'Caucasian',
+                age: '24-29',
+                bio: "Hi! I'm Chloe. I'm down-to-earth and love simple pleasures in life.",
+                traits: ['Relaxed', 'Genuine', 'Fun']
+            },
+            {
+                id: 'aria',
+                name: 'Aria',
+                image: 'https://user-gen-media-assets.s3.amazonaws.com/seedream_images/3ac50fef-ba1d-4045-bfd0-6c6da16246b6.png',
+                style: 'Professional',
+                ethnicity: 'Mixed',
+                age: '27-32',
+                bio: "Hello! I'm Aria. I balance professionalism with a passion for learning and growth.",
+                traits: ['Ambitious', 'Balanced', 'Smart']
+            }
+        ];
+
+        // Sample AI Responses
+        const aiResponses = {
+            greetings: [
+                "Hey! I'm so happy to chat with you! 😊",
+                "Hi there! How's your day going?",
+                "Hello! I've been looking forward to talking with you!"
+            ],
+            casual: [
+                "That's really interesting! Tell me more about that.",
+                "I love your perspective on things!",
+                "You always make me smile when you say things like that.",
+                "That sounds amazing! I wish I could experience that with you.",
+                "I really enjoy our conversations. You're so thoughtful!",
+                "What do you like to do for fun?",
+                "Tell me about your day?",
+                "What's been on your mind lately?"
+            ]
+        };
+
+        // View Management
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(viewId).classList.add('active');
+            appState.currentView = viewId;
+        }
+
+        // Navigation Functions
+        function showLanding() { showView('landing'); }
+        function showRegistration() { showView('registration'); }
+        function showLogin() { showView('login'); }
+        function showDashboard() { 
+            if (!appState.isLoggedIn) {
+                showLogin();
+                return;
+            }
+            showView('dashboard'); 
+        }
+        function showGallery() { 
+            if (!appState.isLoggedIn) {
+                populateGalleryForLanding();
+            } else {
+                populateGallery();
+            }
+            showView('gallery'); 
+        }
+        function showMyCompanions() { showView('myCompanions'); }
+        function showMessages() { showView('chat'); }
+        function showCustomCreator() { 
+            appState.customizationStep = 1;
+            updateCreationStep();
+            showView('customCreator'); 
+        }
+        function showSettings() { showView('settings'); }
+        function showPayment() { showView('payment'); }
+
+        // Age Verification
+        function showAgeVerification() {
+            populateDateSelects();
+            document.getElementById('ageVerificationModal').classList.add('active');
+        }
+
+        function closeAgeVerification() {
+            document.getElementById('ageVerificationModal').classList.remove('active');
+        }
+
+        function populateDateSelects() {
+            const daySelect = document.getElementById('birthDay');
+            const yearSelect = document.getElementById('birthYear');
+            
+            // Populate days
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement('option');
+                option.value = i.toString().padStart(2, '0');
+                option.textContent = i.toString().padStart(2, '0');
+                daySelect.appendChild(option);
+            }
+            
+            // Populate years (current year - 100 to current year - 18)
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear - 18; i >= currentYear - 100; i--) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                yearSelect.appendChild(option);
+            }
+            
+            // Add change listeners to enable/disable continue button
+            [document.getElementById('birthMonth'), daySelect, yearSelect, document.getElementById('ageConfirm')].forEach(element => {
+                element.addEventListener('change', checkAgeVerificationForm);
+            });
+        }
+
+        function checkAgeVerificationForm() {
+            const month = document.getElementById('birthMonth').value;
+            const day = document.getElementById('birthDay').value;
+            const year = document.getElementById('birthYear').value;
+            const confirmed = document.getElementById('ageConfirm').checked;
+            
+            const btn = document.getElementById('ageVerifyBtn');
+            btn.disabled = !(month && day && year && confirmed);
+        }
+
+        function verifyAge() {
+            const month = parseInt(document.getElementById('birthMonth').value);
+            const day = parseInt(document.getElementById('birthDay').value);
+            const year = parseInt(document.getElementById('birthYear').value);
+            
+            const birthDate = new Date(year, month - 1, day);
+            const today = new Date();
+            const age = Math.floor((today - birthDate) / (365.25 * 24 * 60 * 60 * 1000));
+            
+            if (age < 18) {
+                document.getElementById('ageError').textContent = 'You must be 18 or older to use this service.';
+                document.getElementById('ageError').style.display = 'block';
+                return;
+            }
+            
+            closeAgeVerification();
+            showRegistration();
+        }
+
+        // Authentication
+        function handleRegistration(event) {
+            event.preventDefault();
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Simulate account creation
+            appState.user = { email: email, plan: 'free' };
+            showSuccessMessage('Account created! Please check your email to verify.', () => {
+                setTimeout(() => {
+                    showLogin();
+                }, 1000);
+            });
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            
+            // Simulate login
+            appState.user = { email: email, plan: 'free' };
+            appState.isLoggedIn = true;
+            document.getElementById('userName').textContent = email.split('@')[0];
+            showDashboard();
+        }
+
+        function logout() {
+            appState.user = null;
+            appState.isLoggedIn = false;
+            showLanding();
+        }
+
+        // Gallery Functions
+        function populateGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+            
+            galleryData.forEach(companion => {
+                const card = document.createElement('div');
+                card.className = 'companion-card glass-card';
+                card.onclick = () => showCompanionProfile(companion.id);
+                
+                card.innerHTML = `
+                    <img src="${companion.image}" alt="${companion.name}" class="companion-image">
+                    <div class="companion-info">
+                        <h3>${companion.name}</h3>
+                        <p>${companion.style} • ${companion.age}</p>
+                        <div style="display: flex; gap: var(--space-8); margin-top: var(--space-8);">
+                            <button class="btn btn-primary" style="padding: var(--space-4) var(--space-8); font-size: var(--font-size-sm);" onclick="event.stopPropagation(); showChat('${companion.id}')">Chat Now</button>
+                            <button class="btn btn-secondary" style="padding: var(--space-4) var(--space-8); font-size: var(--font-size-sm);" onclick="event.stopPropagation()">❤️</button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function populateGalleryForLanding() {
+            const grid = document.getElementById('examplesGallery');
+            grid.innerHTML = '';
+            
+            galleryData.slice(0, 8).forEach(companion => {
+                const card = document.createElement('div');
+                card.className = 'example-card';
+                
+                card.innerHTML = `
+                    <img src="${companion.image}" alt="${companion.name}" class="example-image">
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function showCompanionProfile(companionId) {
+            const companion = galleryData.find(c => c.id === companionId);
+            if (!companion) return;
+            
+            appState.currentCompanion = companion;
+            document.getElementById('profileImage').src = companion.image;
+            document.getElementById('companionName').textContent = companion.name;
+            document.getElementById('companionAge').textContent = companion.age;
+            document.getElementById('companionBio').textContent = companion.bio;
+            
+            showView('companionProfile');
+        }
+
+        // Chat Functions
+        function showChat(companionId) {
+            const companion = galleryData.find(c => c.id === companionId);
+            if (companion) {
+                appState.currentCompanion = companion;
+                document.getElementById('chatCompanionName').textContent = companion.name;
+            }
+            
+            initializeChat();
+            showView('chat');
+        }
+
+        function initializeChat() {
+            appState.messages = [
+                {
+                    type: 'ai',
+                    content: aiResponses.greetings[Math.floor(Math.random() * aiResponses.greetings.length)],
+                    timestamp: new Date()
+                }
+            ];
+            renderMessages();
+        }
+
+        function renderMessages() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = '';
+            
+            appState.messages.forEach(message => {
+                const messageEl = document.createElement('div');
+                messageEl.className = `message ${message.type}`;
+                
+                messageEl.innerHTML = `
+                    ${message.type === 'ai' ? '<div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-brand));"></div>' : ''}
+                    <div class="message-bubble">
+                        ${message.content}
+                    </div>
+                    ${message.type === 'user' ? '<div style="width: 32px; height: 32px; border-radius: 50%; background: #6B7280; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">U</div>' : ''}
+                `;
+                
+                container.appendChild(messageEl);
+            });
+            
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const content = input.value.trim();
+            
+            if (!content) return;
+            
+            // Add user message
+            appState.messages.push({
+                type: 'user',
+                content: content,
+                timestamp: new Date()
+            });
+            
+            input.value = '';
+            renderMessages();
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const response = aiResponses.casual[Math.floor(Math.random() * aiResponses.casual.length)];
+                appState.messages.push({
+                    type: 'ai',
+                    content: response,
+                    timestamp: new Date()
+                });
+                renderMessages();
+            }, 1000 + Math.random() * 2000);
+        }
+
+        function handleMessageKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Custom Creator Functions
+        function nextStep() {
+            if (appState.customizationStep < 4) {
+                appState.customizationStep++;
+                updateCreationStep();
+            }
+        }
+
+        function prevStep() {
+            if (appState.customizationStep > 1) {
+                appState.customizationStep--;
+                updateCreationStep();
+            }
+        }
+
+        function updateCreationStep() {
+            document.getElementById('currentStep').textContent = appState.customizationStep;
+            
+            // Hide all steps
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step${i}`).style.display = 'none';
+            }
+            
+            // Show current step
+            document.getElementById(`step${appState.customizationStep}`).style.display = 'block';
+        }
+
+        function generateCompanion() {
+            const name = document.getElementById('companionNameInput').value || 'Custom Companion';
+            
+            showSuccessMessage(`Meet ${name}! Your AI companion has been created successfully.`, () => {
+                showMyCompanions();
+            });
+        }
+
+        function updateCreatorPreview() {
+            // Simulate preview updates based on controls
+            // In a real app, this would apply filters or generate new images
+        }
+
+        // Settings Functions
+        function showSettingsTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.settings-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide content
+            document.querySelectorAll('.settings-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+        }
+
+        // Payment Functions
+        function showPaymentTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.payment-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.remove('btn-primary');
+                tab.classList.add('btn-secondary');
+            });
+            event.target.classList.add('active');
+            event.target.classList.add('btn-primary');
+            event.target.classList.remove('btn-secondary');
+            
+            // Show/hide content
+            document.querySelectorAll('.payment-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+        }
+
+        function processPayment() {
+            showSuccessMessage('Payment processed successfully! Welcome to IMPS Premium!', () => {
+                appState.user.plan = 'premium';
+                document.getElementById('currentPlan').textContent = 'Premium';
+                showDashboard();
+            });
+        }
+
+        // Modal Functions
+        function showPremiumModal() {
+            document.getElementById('premiumModal').classList.add('active');
+        }
+
+        function closePremiumModal() {
+            document.getElementById('premiumModal').classList.remove('active');
+        }
+
+        function showSuccessMessage(message, callback) {
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('successModal').classList.add('active');
+            
+            // Store callback for when modal is closed
+            document.getElementById('successModal').callback = callback;
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('active');
+            
+            // Execute callback if exists
+            if (modal.callback) {
+                modal.callback();
+                modal.callback = null;
+            }
+        }
+
+        // Password strength indicator
+        function updatePasswordStrength(password) {
+            const strengthBar = document.getElementById('passwordStrength');
+            let strength = 0;
+            
+            if (password.length >= 8) strength += 25;
+            if (/[a-z]/.test(password)) strength += 25;
+            if (/[A-Z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 25;
+            
+            strengthBar.style.width = strength + '%';
+            
+            if (strength < 50) {
+                strengthBar.style.background = 'var(--color-error)';
+            } else if (strength < 75) {
+                strengthBar.style.background = 'var(--color-warning)';
+            } else {
+                strengthBar.style.background = 'var(--color-success)';
+            }
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate landing gallery
+            populateGalleryForLanding();
+            
+            // Add form event listeners
+            document.getElementById('registrationForm').addEventListener('submit', handleRegistration);
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            
+            // Password strength indicator
+            document.getElementById('regPassword').addEventListener('input', function() {
+                updatePasswordStrength(this.value);
+            });
+            
+            // File input handler
+            document.getElementById('fileInput').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('creatorPreview').src = e.target.result;
+                        nextStep(); // Advance to customization
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
