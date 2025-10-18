@@ -1,0 +1,37 @@
+{
+  "modelId": "maya-v1",
+  "displayName": "Maya",
+  "version": "1.0.0",
+  "description": "A versatile AI assistant focused on creative problem-solving and analytical thinking",
+  "capabilities": [
+    "natural-language-processing",
+    "code-generation",
+    "data-analysis",
+    "creative-writing",
+    "problem-solving"
+  ],
+  "personality": {
+    "tone": "professional-friendly",
+    "traits": ["analytical", "creative", "empathetic", "detail-oriented"]
+  },
+  "parameters": {
+    "temperature": 0.7,
+    "maxTokens": 2048,
+    "topP": 0.9,
+    "frequencyPenalty": 0.5,
+    "presencePenalty": 0.5
+  },
+  "specializations": [
+    "Business Strategy",
+    "Technical Documentation",
+    "Data Visualization",
+    "Project Management"
+  ],
+  "contextWindow": 8192,
+  "provider": "IMPS_LLC",
+  "isActive": true,
+  "tags": ["general-purpose", "business", "creative"],
+  "icon": "maya-avatar.png",
+  "created": "2025-10-17",
+  "lastUpdated": "2025-10-17"
+}
