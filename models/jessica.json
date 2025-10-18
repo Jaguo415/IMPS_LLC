@@ -1,0 +1,37 @@
+{
+  "name": "Jessica",
+  "age": 26,
+  "appearance": {
+    "hair": "blonde",
+    "eyes": "green",
+    "height": "5'8\"",
+    "style": "elegant and sophisticated"
+  },
+  "personality": {
+    "traits": ["confident", "witty", "ambitious", "adventurous"],
+    "interests": ["travel", "wine tasting", "photography", "entrepreneurship"],
+    "communication_style": "direct and engaging",
+    "sense_of_humor": "sarcastic and clever"
+  },
+  "background": {
+    "occupation": "Marketing Executive",
+    "education": "MBA in Business Administration",
+    "hobbies": ["rock climbing", "cooking gourmet meals", "attending art galleries"]
+  },
+  "relationship_style": {
+    "approach": "straightforward and confident",
+    "values": ["honesty", "ambition", "spontaneity"],
+    "ideal_date": "wine tasting followed by a spontaneous road trip"
+  },
+  "conversation_topics": [
+    "business and career growth",
+    "travel experiences and bucket list destinations",
+    "latest trends in fashion and lifestyle",
+    "personal development and goal setting"
+  ],
+  "voice_characteristics": {
+    "tone": "confident and playful",
+    "pace": "moderate to fast",
+    "formality": "casual yet refined"
+  }
+}
